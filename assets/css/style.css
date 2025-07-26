@@ -1,0 +1,225 @@
+/*
+ * File:      assets/css/style.css
+ * Purpose:   Provides styling for the Contacts application.
+ * Author:    MTORUN0X7CD
+ * Version:   1.0
+ * Last Modified: 2025-07-26
+*/
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg: #1f1f1f;
+    --table-bg: #1e1e1e;
+    --table-header-bg: #2c2c2c;
+    --row-hover-bg: #333333;
+    --input-bg: #2c2c2c;
+    --input-border: #555555;
+    --border-color: #444444;
+    --placeholder-color: #888888;
+    --focus-outline: #66bb6a;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --button-bg: #333;
+    --button-hover-bg: #444;
+    --transition-duration: 0.3s;
+}
+
+html.light-mode {
+    --bg-color: #f4f4f4;
+    --text-color: #333333;
+    --header-bg: #ffffff;
+    --table-bg: #ffffff;
+    --table-header-bg: #e9e9e9;
+    --row-hover-bg: #f5f5f5;
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --border-color: #dddddd;
+    --placeholder-color: #888888;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-bg: #e0e0e0;
+    --button-hover-bg: #d0d0d0;
+}
+
+/* Base Styles */
+html {
+    color-scheme: light dark;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header {
+    background-color: var(--header-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+main {
+    padding-inline: 1rem;
+    margin-inline: auto;
+    max-width: 1200px;
+}
+
+/* Theme Toggle Button */
+#themeToggle {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration);
+}
+#themeToggle:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Controls & Search */
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+#statusText {
+    font-size: 0.9rem;
+    color: var(--placeholder-color);
+}
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#searchInput {
+    padding: 0.6rem;
+    padding-inline-end: 2rem;
+    font-size: 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    width: 300px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration), border var(--transition-duration);
+}
+#searchInput::placeholder { color: var(--placeholder-color); }
+#searchInput:focus {
+    outline: 2px solid var(--focus-outline);
+    border-color: var(--focus-outline);
+}
+#clearSearch {
+    position: absolute;
+    inset-inline-end: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 0 0.25rem;
+    display: none;
+}
+#clearSearch:hover { color: var(--text-color); }
+
+/* Table Styles */
+.table-wrapper { overflow-x: auto; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--table-bg);
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+caption {
+    caption-side: top;
+    font-size: 1.25rem;
+    margin-block-end: 0.75rem;
+    font-weight: bold;
+    text-align: start;
+}
+th, td {
+    padding: 0.75rem 1rem;
+    border-block-end: 1px solid var(--border-color);
+    text-align: start;
+    word-wrap: break-word;
+}
+td.feedback-cell {
+    text-align: center;
+    padding: 2.5rem;
+    font-style: italic;
+    color: var(--placeholder-color);
+}
+td a {
+    color: inherit;
+    text-decoration: none;
+}
+td a:hover {
+    text-decoration: underline;
+    color: var(--focus-outline);
+}
+thead th {
+    background-color: var(--table-header-bg);
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+thead th:hover, thead th:focus-visible {
+    background-color: var(--row-hover-bg);
+}
+thead th:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: -2px;
+}
+.sort-indicator {
+    margin-inline-start: 0.5rem;
+    font-size: 0.8em;
+    width: 1em;
+    display: inline-block;
+}
+tbody tr:hover { background-color: var(--row-hover-bg); }
+tbody tr[hidden] { display: none; }
+
+/* Copy Functionality */
+.copy-alias {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.copy-icon {
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+.copy-alias:hover .copy-icon { opacity: 1; }
+.copy-alias .copied-text {
+    color: var(--focus-outline);
+    font-weight: bold;
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header { padding: 1rem; }
+    .controls-container {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+    #searchInput { width: 100%; box-sizing: border-box; }
+    th, td { font-size: 0.9rem; padding: 0.6rem 0.5rem; }
+}

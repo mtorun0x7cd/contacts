@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakte</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Kontakte</h1>
+        <button id="themeToggle" title="Helles/Dunkles Design umschalten" aria-pressed="false">
+            Design umschalten
+        </button>
+    </header>
+    <main>
+        <div class="controls-container">
+            <p id="statusText" aria-live="polite"></p>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Kontakte durchsuchen..." aria-label="Kontakte nach Alias, Name oder Telefonnummer durchsuchen">
+                <button id="clearSearch" title="Suche löschen" aria-label="Suche löschen">×</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <caption>Ihre Kontakte</caption>
+                <thead>
+                    <tr>
+                        <th scope="col" data-column="alias" tabindex="0" aria-sort="ascending">Alias <span class="sort-indicator">▲</span></th>
+                        <th scope="col" data-column="name" tabindex="0" aria-sort="none">Name <span class="sort-indicator"></span></th>
+                        <th scope="col" data-column="phone" tabindex="0" aria-sort="none">Telefonnummer <span class="sort-indicator"></span></th>
+                    </tr>
+                </thead>
+                <!-- The script will dynamically populate this table body -->
+                <tbody id="contactTableBody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- The defer attribute ensures the script runs after the HTML is parsed -->
+    <script src="assets/js/app.js" defer></script>
+</body>
+</html>

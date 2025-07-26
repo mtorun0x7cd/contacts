@@ -14,9 +14,10 @@ A secure, client-side web application for searching, sorting, and managing a loc
 
 ## How to Use
 
-1.  **Clone the Repository (if you haven't already):**
+1.  **Clone the Repository:**
     ```sh
     git clone git@github.com:mtorun0x7cd/contacts.git
+    cd contacts
     ```
 
 2.  **Populate Your Data:**
@@ -39,13 +40,18 @@ A secure, client-side web application for searching, sorting, and managing a loc
     ]
     ```
 
-3.  **Open the Application:**
-    - Open the `index.html` file in your preferred web browser. The application will load and display the data from your `contacts.json` file.
+3.  **Run the Application:**
+    - Due to modern browser security policies (CORS), this application must be served by a local web server to allow it to fetch the `contacts.json` file.
+    - **Navigate to the project directory in your terminal and run:**
+      ```sh
+      # This command uses Python's built-in HTTP server.
+      python3 -m http.server 8000
+      ```
+    - **Open your web browser and go to:** `http://localhost:8000`
 
 ## Project Structure
 
-```
-contacts/
+```contacts/
 ├── .gitignore          # Prevents `contacts.json` from being committed
 ├── index.html          # The main HTML structure
 ├── contacts.json       # Your private contact data (you must create this)
@@ -55,4 +61,3 @@ contacts/
 │   └── js/
 │       └── app.js      # All application logic
 └── README.md           # Project documentation
-```
