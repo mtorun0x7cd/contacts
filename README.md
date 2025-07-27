@@ -10,7 +10,15 @@ A secure, client-side web application for searching, sorting, and managing a loc
 - **Clickable Actions:** Telephone numbers are automatically converted to `tel:` links.
 - **Copy Alias:** Easily copy a contact's alias to the clipboard.
 - **Sortable Columns:** Click any column header to sort the data.
-- **Dark/Light Mode:** A theme toggle with automatic preference detection via `localStorage`.
+- **Dark/Light Mode:** A theme toggle with automatic preference detection.
+
+## Security Model
+
+This application is designed with a strong focus on privacy and security.
+
+1.  **No Data Transmission:** All processing happens in your browser. Your `contacts.json` file is never uploaded or sent over any network.
+2.  **Local File Access:** The application requires a local web server to bypass browser security restrictions (CORS) that prevent a `file://` page from fetching another local file. This is standard practice for local web development.
+3.  **User Responsibility:** The security of your data depends on the security of the `contacts.json` file on your local machine. This file is intentionally not tracked by Git.
 
 ## How to Use
 
@@ -41,8 +49,7 @@ A secure, client-side web application for searching, sorting, and managing a loc
     ```
 
 3.  **Run the Application:**
-    - Due to modern browser security policies (CORS), this application must be served by a local web server to allow it to fetch the `contacts.json` file.
-    - **Navigate to the project directory in your terminal and run:**
+    - Navigate to the project directory in your terminal and run a local web server:
       ```sh
       # This command uses Python's built-in HTTP server.
       python3 -m http.server 8000
@@ -51,7 +58,8 @@ A secure, client-side web application for searching, sorting, and managing a loc
 
 ## Project Structure
 
-```contacts/
+```
+contacts/
 ├── .gitignore          # Prevents `contacts.json` from being committed
 ├── index.html          # The main HTML structure
 ├── contacts.json       # Your private contact data (you must create this)
@@ -61,3 +69,4 @@ A secure, client-side web application for searching, sorting, and managing a loc
 │   └── js/
 │       └── app.js      # All application logic
 └── README.md           # Project documentation
+```
